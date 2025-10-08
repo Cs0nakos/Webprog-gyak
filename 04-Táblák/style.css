@@ -1,0 +1,15 @@
+* {
+    box-sizing: border-box;
+    background-color: #efd;
+}
+
+.board {
+    margin: 0px auto;
+    display: grid;
+    border: outset 2px #8882;
+    width: fit-content;
+}
+
+.cell {
+    border: solid 1px #8882;
+}
