@@ -134,11 +134,11 @@
         <section id="dom-query">
             <h2>🟧 DOM lekérdezések (6 feladat)</h2>
             <ol>
-                <li>Válaszd ki a "dom-query" azonosítójú <i>section</i> elemet és színezd a hátterét fehérre!</li>
-                <li>Számold meg, hány &lt;ol&gt; elem van az oldalon!</li>
-                <li>Írd ki az első <i>h2</i> elem HTML és szöveges tartalmát!</li>
-                <li>Írd ki az első link (&lt;a&gt;) href attribútumát!</li>
-                <li>Keress meg minden <code>.highlight</code> osztályú elemet és töröld az osztályt az elemekről!</li>
+                <li><button onclick=getDomQuery()>getDomQuery</button>Válaszd ki a "dom-query" azonosítójú <i>section</i> elemet és színezd a hátterét fehérre!</li>
+                <li><button onclick=countOrderedLists()>countOrderedLists</button>Számold meg, hány &lt;ol&gt; elem van az oldalon!</li>
+                <li><button onclick=firstH2Content()>firstH2Content</button>Írd ki az első <i>h2</i> elem HTML és szöveges tartalmát!</li>
+                <li><button onclick=firstLinkHref()>firstLinkHref</button>Írd ki az első link (&lt;a&gt;) href attribútumát!</li>
+                <li><button onclick=removeHighlightClass()>removeHighlightClass</button>Keress meg minden <code>.highlight</code> osztályú elemet és töröld az osztályt az elemekről!</li>
                 <li>Keresd meg az első <i>ol</i> típusú elemet, és írd ki a szülőelemének és az első gyerekelemének az
                     azonosítóját!</li>
             </ol>
@@ -149,25 +149,36 @@
             <ol>
                 <li>A menü első eleméhez adj meg egy eseménykezelőt, amelyre a kattintásra felugró ablakban kiírja a
                     menüpont tartalmát.</li>
-                <li>Az oldal tetején lévő &lt;input&gt; mezőnél írd ki valós időben a begépelt szöveget a &lt;search-termp&gt; elembe.</li>
-                <li>az első <i>section</i> elem fölé húzva az egeret, homályosítsd el (filter: blur()) eseménykezelővel.</li>
+                <li>Az oldal tetején lévő &lt;input&gt; mezőnél írd ki valós időben a begépelt szöveget a
+                    &lt;search-termp&gt; elembe.</li>
+                <li>az első <i>section</i> elem fölé húzva az egeret, homályosítsd el (filter: blur()) eseménykezelővel.
+                </li>
             </ol>
         </section>
 
         <section id="js-basics">
             <h2>🟩 JavaScript alapok (9 feladat)</h2>
             <ol>
-                <li class="highlight"><input type="text" onchange="">Írj egy függvényt, amely a beadott szöveget kiírja egy felugró ablakban.</li>
-                <li class="highlight"><input type="text" onchange="">Kérj be egy stringet, és alakítsd át számmá. Felugró ablakban írd ki a számot, vagy ha nem konvertálható, írj ki
+                <li class="highlight"><input type="text" onchange="">Írj egy függvényt, amely a beadott szöveget kiírja
+                    egy felugró ablakban.</li>
+                <li class="highlight"><input type="text" onchange="">Kérj be egy stringet, és alakítsd át számmá.
+                    Felugró ablakban írd ki a számot, vagy ha nem konvertálható, írj ki
                     hibaüzenetet.</li>
-                <li class="highlight"><input type="text" size="3" onchange="">+<input type="text" size="3" onchange="">=<span id="result"></span>Készíts egy függvényt, ami a két bemeneti szám összegét adja vissza.</li>
-                <li class="highlight"><button onclick="">Person</button>Hozz létre egy person objektumot name, age és job tulajdonságokkal.</li>
-                <li class="highlight"><button onclick="">toString</button>Adj az előző objektumhoz egy metódust, ami a következő stringet adja vissza: "Név: &lt;name&gt;, Kor:
+                <li class="highlight"><input type="text" size="3" onchange="">+<input type="text" size="3"
+                        onchange="">=<span id="result"></span>Készíts egy függvényt, ami a két bemeneti szám összegét
+                    adja vissza.</li>
+                <li class="highlight"><button onclick="">Person</button>Hozz létre egy person objektumot name, age és
+                    job tulajdonságokkal.</li>
+                <li class="highlight"><button onclick="">toString</button>Adj az előző objektumhoz egy metódust, ami a
+                    következő stringet adja vissza: "Név: &lt;name&gt;, Kor:
                     &lt;age&gt;".</li>
-                <li class="highlight"><button onclick="">Átlag</button>Készíts egy tömböt 10 véletlen számból, és számold ki az átlagukat.</li>
+                <li class="highlight"><button onclick="">Átlag</button>Készíts egy tömböt 10 véletlen számból, és
+                    számold ki az átlagukat.</li>
                 <li class="highlight"><button onclick="">Szűrés</button>Szűrd ki az összes páros számot a tömbből.</li>
                 <li class="highlight">Írj két ciklust, amelyek 1-től 5-ig számolnak — for és while változatban.</li>
-                <li class="highlight"><input type="text" size="5" id="name"><button onclick="">Hello</button>Készíts egy függvényt, ami felugró ablakban kiírja a "Hello, &lt;name&gt;!" szöveget, a name paraméter alapértelmezett értéke legyen "Vendég".</li>
+                <li class="highlight"><input type="text" size="5" id="name"><button onclick="">Hello</button>Készíts egy
+                    függvényt, ami felugró ablakban kiírja a "Hello, &lt;name&gt;!" szöveget, a name paraméter
+                    alapértelmezett értéke legyen "Vendég".</li>
             </ol>
         </section>
 
@@ -186,7 +197,8 @@
         <section id="array">
             <h2>🟩 Array – tömbök (6 feladat)</h2>
             <ol>
-                <li><input type="text" value="10,20,30,40,50">Olvasd be az input elem tartalmát, és alakítsd tömbbé. Írd ki, hány elem van a tömbben.</li>
+                <li><input type="text" value="10,20,30,40,50">Olvasd be az input elem tartalmát, és alakítsd tömbbé. Írd
+                    ki, hány elem van a tömbben.</li>
                 <li><button onclick="">Push</button>Adj hozzá egy új véletlen számot a push() metódussal.</li>
                 <li><button onclick="">Reduce</button>Számold ki a tömb elemeinek összegét a reduce() metódussal.</li>
                 <li><button onclick="">Szűrés</button>Szűrd ki a 7-nél nagyobbakat.</li>
@@ -242,7 +254,8 @@
             <ol>
                 <li>Hozz létre egy új &lt;section&gt; elemet és add hozzá a dokumentumhoz, az utolsó section után.</li>
                 <li>Az új section elemben hozz létre egy új &lt;ul&gt; elemet.</li>
-                <li>Generálj 5 &lt;li&gt; elemet az új &lt;ul&gt; listába ciklussal, az elemek tartalma legyen fekete, fehér, piros, zöld, kék.</li>
+                <li>Generálj 5 &lt;li&gt; elemet az új &lt;ul&gt; listába ciklussal, az elemek tartalma legyen fekete,
+                    fehér, piros, zöld, kék.</li>
                 <li>Távolítsd el az utolsó gyerekelemet a listából.</li>
                 <li>Adj az új section elemnek egyedi azonosítót.</li>
                 <li>Színezd ki az új lista elemeket különböző színekkel.</li>

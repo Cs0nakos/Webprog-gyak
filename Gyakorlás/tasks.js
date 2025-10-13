@@ -1,26 +1,46 @@
 // DOM lekérdezések
 function getDomQuery() {
     // 1. Válaszd ki a "dom-query" azonosítójú <section> elemet és színezd a hátterét fehérre!
+    let el = document.getElementById("dom-query");
+    el = document.querySelector("#dom-query");
+    el.style.backgroundColor = "white";
 }
 
 function countOrderedLists() {
     // 2. Számold meg, hány <ol> elem van az oldalon!
+    let ols = document.getElementsByTagName("ol");
+    ols = document.querySelectorAll("ol");
+    alert(ols.length);
 }
 
 function firstH2Content() {
     // 3. Írd ki az első <h2> elem HTML és szöveges tartalmát!
+    let h2 = document.getElementsByTagName("h2")[0];
+    alert(h2.innerHTML, h2.textContent);
 }
 
 function firstLinkHref() {
     // 4. Írd ki az első link (<a>) href attribútumát!
+    let a = document.getElementsByTagName("a")[0];
+    alert(a.getAttribute("href"));
 }
 
 function removeHighlightClass() {
     // 5. Keress meg minden .highlight osztályú elemet és töröld az osztályt az elemekről!
+    let highlights = document.getElementsByClassName("highlight");
+    for (let key of highlights) {
+        list[key].classÉist.remove("highlight");
+    }
+
+    for (let li of list) {
+        li.classList.remove("highlight");
+    }
+    
 }
 
 function parentAndFirstChild() {
     // 6. Keresd meg az első <ol> típusú elemet, és írd ki a szülőelemének és az első gyerekelemének az azonosítóját!
+    let ol = document.getElementsByTagName("ol")[0];
 }
 
 // Eseménykezelés
