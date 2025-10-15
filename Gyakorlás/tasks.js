@@ -27,13 +27,10 @@ function firstLinkHref() {
 
 function removeHighlightClass() {
     // 5. Keress meg minden .highlight osztályú elemet és töröld az osztályt az elemekről!
-    let highlights = document.getElementsByClassName("highlight");
-    for (let key of highlights) {
-        list[key].classÉist.remove("highlight");
-    }
-
-    for (let li of list) {
-        li.classList.remove("highlight");
+    let highlights = document.querySelectorAll(".highlight");
+    for (let el of highlights) {
+        el.classList.remove('highlight');
+        console.log(el);
     }
     
 }
@@ -41,11 +38,18 @@ function removeHighlightClass() {
 function parentAndFirstChild() {
     // 6. Keresd meg az első <ol> típusú elemet, és írd ki a szülőelemének és az első gyerekelemének az azonosítóját!
     let ol = document.getElementsByTagName("ol")[0];
+    alert("Szülő azon: " + ol.parentElement.id + "\nFirst Child azon: " + ol.firstElementChild.id);
 }
 
 // Eseménykezelés
 function menuClickAlert() {
     // 1. A menü első eleméhez adj meg egy eseménykezelőt, amelyre a kattintásra felugró ablakban kiírja a menüpont tartalmát.
+function onMenuClick(event) {
+    alert(event.target.innerHTML);
+}
+
+    let el = document.querySelector("body > header > nav > ul > li:nth-child(1) > a");
+    el.addEventListener('click', onMenuClick());
 }
 
 function copyInput() {
