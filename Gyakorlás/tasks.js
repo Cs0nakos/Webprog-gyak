@@ -54,10 +54,32 @@ function onMenuClick(event) {
 
 function copyInput() {
     // 2. Az oldal tetején lévő <input> mezőnél írd ki valós időben a begépelt szöveget a <search-termp> elembe.
+    let el = document.querySelector("#search");
+    el.addEventListener('change', 
+        event => {
+            let src = event.target.value + event.key;
+            let dst = document.querySelector("#search-termp");
+            dst.innerHTML = src;
+        }
+    )
 }
 
 function blurOnHover() {
     // 3. az első <section> elem fölé húzva az egeret, homályosítsd el (filter: blur()) eseménykezelővel.
+    let el = document.getElementsByTagName("section")[0];
+    // el.addEventListener('mouseover',
+    //     event => {
+    //         el.style.filter = "blur(10px)";
+    //     });
+    // el.addEventListener('mouseout',
+    //     event => {
+    //         el.style.filter = "none";
+    //     });
+    function toggle(event) {
+        el.classList.toggle('blurred');
+    }
+    el.addEventListener('mouseover', toggle);
+    el.addEventListener('mouseout', toggle);
 }
 
 // JS alapok

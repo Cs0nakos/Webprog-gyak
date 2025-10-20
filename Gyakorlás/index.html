@@ -106,6 +106,10 @@
         .highlight {
             background-color: #ffffff80;
         }
+
+        .blurred {
+            filter: blur(10px);
+        }
     </style>
     <script src="tasks.js" defer></script>
 </head>
@@ -149,9 +153,9 @@
             <ol>
                 <li><button onclick=menuClickAlert()>menuClickAlert</button>A menü első eleméhez adj meg egy eseménykezelőt, amelyre a kattintásra felugró ablakban kiírja a
                     menüpont tartalmát.</li>
-                <li>Az oldal tetején lévő &lt;input&gt; mezőnél írd ki valós időben a begépelt szöveget a
+                <li><button onclick=copyInput()>copyInput</button>Az oldal tetején lévő &lt;input&gt; mezőnél írd ki valós időben a begépelt szöveget a
                     &lt;search-termp&gt; elembe.</li>
-                <li>az első <i>section</i> elem fölé húzva az egeret, homályosítsd el (filter: blur()) eseménykezelővel.
+                <li><button onclick=blurOnHover()>blurOnHover</button>az első <i>section</i> elem fölé húzva az egeret, homályosítsd el (filter: blur()) eseménykezelővel.
                 </li>
             </ol>
         </section>
