@@ -53,12 +53,12 @@ function onMenuClick(event) {
 }
 
 function copyInput() {
-    // 2. Az oldal tetején lévő <input> mezőnél írd ki valós időben a begépelt szöveget a <search-termp> elembe.
+    // 2. Az oldal tetején lévő <input> mezőnél írd ki valós időben a begépelt szöveget a <search-term> elembe.
     let el = document.querySelector("#search");
     el.addEventListener('change', 
         event => {
             let src = event.target.value + event.key;
-            let dst = document.querySelector("#search-termp");
+            let dst = document.querySelector("#search-term");
             dst.innerHTML = src;
         }
     )
