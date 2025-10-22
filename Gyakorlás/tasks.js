@@ -32,7 +32,7 @@ function removeHighlightClass() {
         el.classList.remove('highlight');
         console.log(el);
     }
-    
+
 }
 
 function parentAndFirstChild() {
@@ -44,9 +44,9 @@ function parentAndFirstChild() {
 // Eseménykezelés
 function menuClickAlert() {
     // 1. A menü első eleméhez adj meg egy eseménykezelőt, amelyre a kattintásra felugró ablakban kiírja a menüpont tartalmát.
-function onMenuClick(event) {
-    alert(event.target.innerHTML);
-}
+    function onMenuClick(event) {
+        alert(event.target.innerHTML);
+    }
 
     let el = document.querySelector("body > header > nav > ul > li:nth-child(1) > a");
     el.addEventListener('click', onMenuClick());
@@ -55,7 +55,7 @@ function onMenuClick(event) {
 function copyInput() {
     // 2. Az oldal tetején lévő <input> mezőnél írd ki valós időben a begépelt szöveget a <search-term> elembe.
     let el = document.querySelector("#search");
-    el.addEventListener('change', 
+    el.addEventListener('change',
         event => {
             let src = event.target.value + event.key;
             let dst = document.querySelector("#search-term");
@@ -85,6 +85,7 @@ function blurOnHover() {
 // JS alapok
 function toUpperCase() {
     // 1. Írj egy függvényt, amely a beadott szöveget kiírja egy felugró ablakban.
+    
 }
 
 function convertToNumber() {
