@@ -19,15 +19,17 @@ class Car {
         this.img = img;
     }
 
-    createCard() {  
+    createCard() {
         const card = document.createElement("car-card");
         card.id = `${this.brand}${this.model}`;
         card.innerHTML = `
-        <h3> ${this.brand} : ${this.model}</h3>
+        <h3>${this.brand} : ${this.model}</h3>
         <img src="${this.img}">
-        <span class="label"> </span><span class"value">${this.type} </span>
-        <span class="label"> </span><span class"value">${this.power} </span>
-        <span class="label"> </span><span class"value">${this.topSpeed} </span>
-        `;
+        <span class="label">Type:</span><span class="value">${this.type}</span>
+        <span class="label">Power:</span><span class="value">${this.power}</span>
+        <span class="label">Speed:</span><span class="value">${this.topSpeed}</span>
+    `;
+        return card;
     }
+
 }
