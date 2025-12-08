@@ -8,27 +8,48 @@ let _console = null;
 
 function task1(word) {
     // Készíts függvényt, amely eldönti egy szóról, hogy van-e benne kétjegyű betű (cs, dz, ny, ...)!
+    var ketjegyu = ['cs', 'dz', 'gy', 'ly', 'ny', 'sz', 'ty', 'zs', 'dzs'];
+
+    ketjegyu.forEach(e => result = result || word.includes(e));
+
     return false;
 }
 
 function task2(phoneNumber) {
     // Írj függvényt, amely ellenőrzi, hogy egy telefonszám +36-tal kezdődik-e!
+    if (phoneNumber.startsWith('+36')) {
+        return true;
+    }
+
     return false;
 }
 
 function task3(name) {
     // Írj függvényt, amely ellenőrzi, hogy egy fájlnév kiterjesztése képre utal-e (.jpg, .png, .bmp, .gif).
+    var tipus = ['.jpg', '.png', '.bmp', '.gif', '.jpeg'];
+
+    tipus.forEach(e => result = result || name.endsWith(e));
+
     return false;
+
 }
 
 function task4(email) {
     // Vizsgáld meg, hogy az e-mail cím érvényes-e, azaz tartalmaz-e @ karaktert!
+    if (email.includes('@')) {
+        return true;
+    }
+
     return false;
 }
 
 function task5(path) {
     // Egy útvonalból (path) add vissza a fájlnevet!
-    return '?';
+    let per = path.lastIndexOf('/');
+    
+    if (oer == -1) return path;
+
+    return path.slice(per + 1);
 }
 
 function task6(password) {
@@ -36,6 +57,14 @@ function task6(password) {
     // - van benne kisbetű
     // - van benne nagybetű
     // - van benne számjegy
+    let vanKicsi = 1;
+    let vanNagy = 1;
+    let vanSzam = 1;
+
+    if (vanKicsi && vanNagy && vanSzam) {
+        return true;
+    }
+
     return false;
 }
 
@@ -74,7 +103,7 @@ function task12(date) {
 
 async function main() {
     _console = await getConsole();
-   _console.setConsoleTop(0.3 * document.body.clientHeight);
+    _console.setConsoleTop(0.3 * document.body.clientHeight);
 
     let word = await _console.prompt('1. Kérek egy szót: ');
     _console.writeln('A szóban ' + (task1(word) ? 'van' : 'nincsen') + ' kétjegyű betű.');
@@ -125,7 +154,7 @@ async function main() {
     } else {
         _console.writeln(`év: ${dateObj.year}, hónap: ${dateObj.month}, nap: ${dateObj.day}`);
     }
-    
+
 }
 
 main();
