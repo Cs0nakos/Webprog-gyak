@@ -1,19 +1,10 @@
-body {
-    background-color: black;
-    font-family: 'Arial', sans-serif;
-}
-
 car-card {
     display: grid;
     justify-items: center;
     grid-template-columns: 1fr 2fr;
     width: 16em;
     height: 20em;
-    background-color: black;
-    border: 3px solid gold;
-    border-radius: 20px;
-    color: gold;
-    margin: 1em;
+    background-color: silver;
 }
 
 car-card img {
@@ -22,12 +13,11 @@ car-card img {
     object-fit: cover;
 }
 
-car-card h3{
+car-card h3 {
     grid-column: 1 / 3;
-    padding: 0em;
     margin: 0em;
-    vertical-align: middle;
 }
+
 car-card .label {
     grid-column: 1;
 }
@@ -40,4 +30,6 @@ car-card .value {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    gap: 5px;
+    justify-content: center;
 }

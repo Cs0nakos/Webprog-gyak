@@ -1,5 +1,5 @@
-const _cars =
-    `brand;model;type;price;engine;power;topSpeed;img
+const _carData =
+`brand;model;type;price;engine;power;topSpeed;img
 Tesla;Model S;Sedan;79999;Electric;670;250;https://evadatbazis.hu/wp-content/uploads/2024/04/Tesla_Model_S_2016-01@2x.jpg
 BMW;3 Series;Sedan;45900;Petrol;320;250;https://crdms.images.consumerreports.org/c_lfill,w_563,q_auto,f_auto/prod/cars/chrome/white/2023BMC220012_1280_01
 Audi;A3;Hatchback;29900;Diesel;150;220;https://imgd.aeplcdn.com/370x208/n/cw/ec/47030/new-a3-exterior-right-front-three-quarter-6.jpeg
