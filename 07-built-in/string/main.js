@@ -47,7 +47,7 @@ function task5(path) {
     // Egy útvonalból (path) add vissza a fájlnevet!
     let per = path.lastIndexOf('/');
     
-    if (oer == -1) return path;
+    if (per == -1) return path;
 
     return path.slice(per + 1);
 }
@@ -57,11 +57,11 @@ function task6(password) {
     // - van benne kisbetű
     // - van benne nagybetű
     // - van benne számjegy
-    let vanKicsi = 1;
-    let vanNagy = 1;
-    let vanSzam = 1;
+    let vanKicsi = new RegExp('[a-z]', 'g');
+    let vanNagy = /[A-Z]/g;
+    let vanSzam = /\d/g;
 
-    if (vanKicsi && vanNagy && vanSzam) {
+    if (password.match(vanKicsi) && password.match(vanNagy) && password.match(vanSzam)) {
         return true;
     }
 
@@ -70,12 +70,28 @@ function task6(password) {
 
 function task7(source) {
     // Számold össze, hogy a forrásban mennyi függvény szerepel (function <name>...)!
+    let ix = 0;
+    let count = 0;
+
+    while (ix = source.IndexOf('function', ix) != -1) {
+        ix += 8;
+        count++;
+    }
+
     return 0;
 }
 
 function task8(source) {
     // Gyűjts ki és ábécé szerint rendezd  a forrásban szereplő összes változót (let <name> vagy const <name>)!
-    return [];
+    let ix = 0;
+    let vars = [];
+    
+    while (ix = source.IndexOf('let ', ix) != -1) {
+        ix += 3;
+
+    }
+
+    return vars.cort();
 }
 
 function task9(sentence) {
