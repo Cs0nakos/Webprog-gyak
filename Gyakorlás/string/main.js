@@ -3,19 +3,59 @@ import { getConsole } from '../../lib/console/console.js'
 let _console = null;
 
 function skipWhileChars(text, chars, ix = 0) {
-    
+
+    while (ix < text.length)
+    {
+        let ch = text[ix];
+
+        if (!chars.includes(ch)) {
+            return ix;
+        }
+
+        ix += 1;
+    }
 }
 
 
 function skipUntilChars(text, chars, ix = 0) {
+    while (ix < text.length)
+    {
+        let ch = text[ix];
 
+        if (chars.includes(ch)) {
+            return ix;
+        }
+
+        ix += 1;
+    }
 }
 
 
 function splitByChars(text, chars = ' ') {
+    let charachters = [];
+    let chara = '';
 
+    for (let i = 0; i < text.length; i++){
+        let ch = text[i];
+
+        if (chars.includes(ch)){
+
+            if (chara !== ''){
+                charachters.push(chara);
+                chara = '';
+            }
+        }
+        else {
+            chara += ch;
+        }
+    }
+
+    if (chara !== ''){
+        charachters.push(chara);
+    }
+
+    return charachters;
 }
-
 
 function getInnerHTML(text, tag) {
 
