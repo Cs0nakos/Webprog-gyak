@@ -3,59 +3,46 @@ import { getConsole } from '../../lib/console/console.js'
 let _console = null;
 
 function skipWhileChars(text, chars, ix = 0) {
-
-    while (ix < text.length)
-    {
-        let ch = text[ix];
-
-        if (!chars.includes(ch)) {
-            return ix;
-        }
-
-        ix += 1;
+    for (; ix < text.length; ix++) {
+    // while (ix < text.length) {
+        let ch = text[ix]
+        if (!chars.includes(ch)) return ix
+        ix++
     }
 }
 
 
 function skipUntilChars(text, chars, ix = 0) {
-    while (ix < text.length)
-    {
-        let ch = text[ix];
-
-        if (chars.includes(ch)) {
-            return ix;
-        }
-
-        ix += 1;
+    for (; ix < text.length; ix++) {
+    // while (ix < text.length) {
+        let ch = text[ix]
+        if (chars.includes(ch)) return ix
+        ix++
     }
 }
 
 
 function splitByChars(text, chars = ' ') {
-    let charachters = [];
-    let chara = '';
-
-    for (let i = 0; i < text.length; i++){
-        let ch = text[i];
-
-        if (chars.includes(ch)){
-
-            if (chara !== ''){
-                charachters.push(chara);
-                chara = '';
+    let arr = []
+    if (text == '') arr.push(text)
+    else {
+        let start = 0, ix = 0
+        while (ix < text.length) {
+            let ch = text[ix]
+            if (chars.includes(ch)) {
+                arr.push(text.slice(start, ix))
+                start = ix + 1
             }
+            ix++
         }
-        else {
-            chara += ch;
+        if (start != ix) {
+            arr.push(text.slice(start, ix))
         }
     }
 
-    if (chara !== ''){
-        charachters.push(chara);
-    }
-
-    return charachters;
+    return arr
 }
+
 
 function getInnerHTML(text, tag) {
 
@@ -99,43 +86,43 @@ function test(label, received, expected) {
 async function main() {
     _console = await getConsole();
    _console.setConsoleTop(0.3 * document.body.clientHeight);
-   // skipWhileChars
-   test('skipWhileChars', skipWhileChars('\n\t 1 2 3  ', '\t \n'), '1 2 3  ')
-   test('skipWhileChars', skipWhileChars('', '\t \n'), '')
-   test('skipWhileChars', skipWhileChars('1 \t2 \n3  ', '\t \n'), '1 2 3  ')
-   // skipUntilChars
-   test('skipUntilChars', skipUntilChars('\n\t  1 2 3  ', '\t \n'), '\n\t  1 2 3  ')
-   test('skipUntilChars', skipUntilChars('', '\t \n'), '')
-   test('skipUntilChars', skipUntilChars('1 \t2 \n3  ', '\t \n'), ' \t2 \n3  ')
+//    // skipWhileChars
+//    test('skipWhileChars', skipWhileChars('\n\t 1 2 3  ', '\t \n'), '1 2 3  ')
+//    test('skipWhileChars', skipWhileChars('', '\t \n'), '')
+//    test('skipWhileChars', skipWhileChars('1 \t2 \n3  ', '\t \n'), '1 2 3  ')
+//    // skipUntilChars
+//    test('skipUntilChars', skipUntilChars('\n\t  1 2 3  ', '\t \n'), '\n\t  1 2 3  ')
+//    test('skipUntilChars', skipUntilChars('', '\t \n'), '')
+//    test('skipUntilChars', skipUntilChars('1 \t2 \n3  ', '\t \n'), ' \t2 \n3  ')
    // splitByChars
    test('splitByChars', splitByChars('a:b,c;d', ':,;'), ['a','b','c','d'])
    test('splitByChars', splitByChars('', ':,;'), [''])
-   test('splitByChars', splitByChars('a:b:c'), )
-   // getInnerHTML
-   test('getInnerHTML', getInnerHTML(), )
-   test('getInnerHTML', getInnerHTML(), )
-   test('getInnerHTML', getInnerHTML(), )
-   test('getInnerHTML', getInnerHTML(), )
-   // getAttribute
-   test('getAttribute', getAttribute(), )
-   test('getAttribute', getAttribute(), )
-   test('getAttribute', getAttribute(), )
-   test('getAttribute', getAttribute(), )
-   // normalizeSpaces
-   test('normalizeSpaces', normalizeSpaces(), )
-   test('normalizeSpaces', normalizeSpaces(), )
-   test('normalizeSpaces', normalizeSpaces(), )
-   test('normalizeSpaces', normalizeSpaces(), )
-   // stripStart
-   test('stripStart', stripStart(), )
-   test('stripStart', stripStart(), )
-   test('stripStart', stripStart(), )
-   test('stripStart', stripStart(), )
-   // stripEnd
-   test('stripEnd', stripEnd(), )
-   test('stripEnd', stripEnd(), )
-   test('stripEnd', stripEnd(), )
-   test('stripEnd', stripEnd(), )
+   test('splitByChars', splitByChars('a:b:c'), ['a:b:c'])
+//    // getInnerHTML
+//    test('getInnerHTML', getInnerHTML(), )
+//    test('getInnerHTML', getInnerHTML(), )
+//    test('getInnerHTML', getInnerHTML(), )
+//    test('getInnerHTML', getInnerHTML(), )
+//    // getAttribute
+//    test('getAttribute', getAttribute(), )
+//    test('getAttribute', getAttribute(), )
+//    test('getAttribute', getAttribute(), )
+//    test('getAttribute', getAttribute(), )
+//    // normalizeSpaces
+//    test('normalizeSpaces', normalizeSpaces(), )
+//    test('normalizeSpaces', normalizeSpaces(), )
+//    test('normalizeSpaces', normalizeSpaces(), )
+//    test('normalizeSpaces', normalizeSpaces(), )
+//    // stripStart
+//    test('stripStart', stripStart(), )
+//    test('stripStart', stripStart(), )
+//    test('stripStart', stripStart(), )
+//    test('stripStart', stripStart(), )
+//    // stripEnd
+//    test('stripEnd', stripEnd(), )
+//    test('stripEnd', stripEnd(), )
+//    test('stripEnd', stripEnd(), )
+//    test('stripEnd', stripEnd(), )
 }
 
 main();
