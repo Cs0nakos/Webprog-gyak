@@ -5,7 +5,7 @@ let _console = await getConsole();
 
 
 function test(label, received, expected) {
-   _console.writeln(`${label}: ${received == expected ? 'ok' : 'fail'}`)
+    _console.writeln(`${label}: ${received == expected ? 'ok' : 'fail'}`)
 }
 
 // 1. Visszaadja az első karaktert vagy üres sztringet.
@@ -67,8 +67,33 @@ test('skipChars', skipChars('  Hello', ' Hello'), 7)
 
 // 5. A paraméterként kapott év, hó és nap értékekből egy dátum sztringet állít elő, a következő formátumban: yyyy-mm-dd. Tehát az évet négy, a hónapot és a napot két számjeggyel jeleníti meg. Érvénytelen paraméterekre null értéket ad vissza.
 function formatDate(y, m, d) {
+    var date = "";
 
-    
+    if (y == null || m == null || d == null) {
+        return null;
+    }
+
+    if (y <= 0 || m <= 0 || m > 12 || d <= 0 || d > 31) {
+        return null;
+    }
+
+    date += y.toString() + '-';
+
+    if (m < 10) {
+        date += '0' + m.toString() + '-';
+    }
+    else {
+        date += m.toString() + '-';
+    }
+
+    if (d < 10) {
+        date += '0' + d.toString();
+    }
+    else {
+        date += d.toString();
+    }
+
+    return date;
 }
 test('formatDate', formatDate(2025, 12, 15), '2025-12-15')
 test('formatDate', formatDate(null, 12, 15), null)
