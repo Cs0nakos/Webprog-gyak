@@ -2,16 +2,73 @@ import { getConsole } from '../../lib/console/console.js'
 
 let _console = await getConsole()
 
-_console.writeln('Vegyes feladatok')
+_console.writeln('Vegyes feladatok\n')
 
 // oszthatóság
 // 1. Kérj be egy számot és írd ki, hogy prímszám-e!")
-let a1 = _console.prompt('Kérek egy számot')
+_console.writeln("1. Feladat:")
+let a1 = await _console.prompt('Kérek egy számot')
+
+let szam1 = parseInt(a1)
+let i = 2;
+let osztok = 0;
+while (szam1 - 1 >= i)
+{
+    if (szam1 % i == 0){
+        osztok = osztok + 1;
+    }
+    i++;
+}
+
+if (osztok == 0) {
+    _console.writeln(`\nA(z) ${szam1} prímszám!`);
+}
+else {
+    _console.writeln(`\nA(z) ${szam1} nem prímszám, mert ${osztok + 2} osztója van!`);
+}
 
 // 2. Kérj be két számot és írd ki, hogy relatív prímek-e (van-e közös valódi osztójuk)!")
+_console.writeln("\n2. Feladat:")
+
+let a2 = await _console.prompt('Kérem az első számot')
+let a3 = await _console.prompt('\nKérem a második számot')
+
+let szam2 = parseInt(a2)
+let szam3 = parseInt(a3)
+let j = 0;
+let kozosOszto = [];
+
+while (j <= szam2 && j <= szam3)
+{
+    if (szam2 % j == 0 && szam3 % j == 0){
+        kozosOszto.push(j);
+    }
+    j++;
+}
+
+if (kozosOszto.length == 1) {
+    _console.writeln(`\nA(z) ${szam2} és a(z) ${szam3} relatív prímek!\n`);
+}
+else {
+    _console.writeln(`\nA(z) ${szam2} és a(z) ${szam3} nem relatív prímek, mert a közös osztóik: ${kozosOszto}\n`);
+}
+
 
 // számsorozat generálása
 // 3. Írd ki a Fibonacci sorozatot a 3.-tól a 13. eleméig! S(0) = 128, S(1) = 64 és S(i) = (S(i-2) + S(i-1))/2")
+
+_console.writeln("\n3. Feladat:")
+
+let fib = [128, 64];
+
+for (let k = 2; k < 14; k++) {
+    if (k >= 2) {
+        fib[k] = (fib[k - 2] + fib[k - 1]) / 2;
+    }
+}
+
+_console.writeln(`A Fibonacci sorozat a 3.-tól a 13. eleméig: ${fib.slice(3, 14).join(", ")}`);
+
 
 // min/max/sum/avg
 // 4. Készíts egy listát 20 darab 50-nél kisebb, véletlen, egész számból!")
