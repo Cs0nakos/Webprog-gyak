@@ -11,7 +11,19 @@ export default class List {
     // List<T>(IEnumerable<T> iterable) - lista létrehozása a megadott felsorolható elemekből 
     // List<T>(Int32) - megadott kapacitású lista létrehozása
     constructor(arg) {
-
+        this.#data = [];
+        //if (arg === undefined) {
+        //    return this.#data = []
+        //}
+        if (this.isIterable(arg)) {
+        //    this.#data = [...arg] // 'a', 'b'
+        //    this.#data = ['a', 'b']
+            this.addRange(arg)
+        }
+        else if (!isNaN(arg)) {
+            this.#data = new Array(arg)
+        }
+         
     }
     //#endregion
 
@@ -31,6 +43,10 @@ export default class List {
     // #region Elem hozzáadása / eltávolítása
     // void Add(T item) - Egy elem hozzáadása a lista végéhez
     add(item) {
+        if (item != undefined) {
+            return
+        }
+        this.#data.push(item)
     }
     // void AddRange(IEnumerable<T> iterable) - Több elem hozzáadása egyszerre
     addRange(iterable) {
