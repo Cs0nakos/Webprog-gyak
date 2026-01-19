@@ -50,12 +50,20 @@ export default class List {
     }
     // void AddRange(IEnumerable<T> iterable) - Több elem hozzáadása egyszerre
     addRange(iterable) {
+        if (!this.#isIterable(iterable)) {
+            return
+        }
+        for (let elem of iterable){
+            this.#data.push(elem)
+        }
     }
     // void Insert(int index, T item) - Elem beszúrása adott indexre
     insert(index, item) {
+        this.#data[index] = item
     }
     // void InsertRange(int index, IEnumerable<T> items) - Elem beszúrása adott indexre
     insertRange(index, iterable) {
+        
     }
     // bool Remove(T item) - Az első egyező elem törlése
     remove(item) {

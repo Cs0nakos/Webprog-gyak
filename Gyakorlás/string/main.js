@@ -3,7 +3,7 @@ import { getConsole } from '../../lib/console/console.js'
 let _console = null;
 
 function skipWhileChars(text, chars, ix = 0) {
-    for (; ix < text.length; ix++) {
+    for (ix = 0; ix < text.length; ix++) {
     // while (ix < text.length) {
         let ch = text[ix]
         if (!chars.includes(ch)) return ix
@@ -13,7 +13,7 @@ function skipWhileChars(text, chars, ix = 0) {
 
 
 function skipUntilChars(text, chars, ix = 0) {
-    for (; ix < text.length; ix++) {
+    for (ix = 0; ix < text.length; ix++) {
     // while (ix < text.length) {
         let ch = text[ix]
         if (chars.includes(ch)) return ix
