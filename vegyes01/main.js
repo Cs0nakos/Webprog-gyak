@@ -59,16 +59,14 @@ else {
 
 _console.writeln("\n3. Feladat:")
 
-let fib = [128, 64];
+let fibSor = [128, 64];
 
-for (let k = 2; k < 14; k++) {
-    if (k >= 2) {
-        fib[k] = (fib[k - 2] + fib[k - 1]) / 2;
-    }
+for (let k = 1; k < 13; k++) {
+    let elem = (fibSor[k - 1] + fibSor[k]) / 2;
+    fibSor.push(elem);
 }
 
-_console.writeln(`A Fibonacci sorozat a 3.-tól a 13. eleméig: ${fib.slice(3, 14).join(", ")}`);
-
+_console.writeln(`A Fibonacci sorozat a 3.-tól a 13. eleméig: ${fibSor.slice(3, 14).join(", ")}`);
 
 // min/max/sum/avg
 // 4. Készíts egy listát 20 darab 50-nél kisebb, véletlen, egész számból!")
@@ -78,7 +76,74 @@ _console.writeln(`A Fibonacci sorozat a 3.-tól a 13. eleméig: ${fib.slice(3, 1
 //     Írd ki minden elem szórását, azaz az átlagtól való eltérésének a négyzetét!\
 //     Példa: átlag=23.567, ekkor a 17 szórása (17 - 23.567)^2 = 43,125489")
 
+_console.writeln("\n4. Feladat:")
+_console.writeln("4.a")
+
+let véletlenSzamok = [];
+for (let l = 0; l < 20; l++) {
+    let rand = Math.floor(Math.random() * 50);
+    véletlenSzamok.push(rand);
+}
+_console.writeln(`A lista elemei: ${véletlenSzamok.join(", ")}`);
+
+_console.writeln("\n4.b")
+let max = 0;
+for (let p = 0; p < véletlenSzamok.length; p++) {
+    if (véletlenSzamok[p] > max) {
+        max = véletlenSzamok[p];
+    }
+}
+
+let kisebb = 0;
+
+for (let m = 0; m < véletlenSzamok.length; m++) {
+    if (véletlenSzamok[m] < max * 0.2) {
+        kisebb += 1;
+    }
+}
+_console.writeln(`A lista elemei közül ${kisebb} elem kisebb, mint a maximum 20%-a.`);
+
+_console.writeln("\n4.c")
+let osszeg = 0;
+for (let n = 0; n < véletlenSzamok.length; n++) {
+    osszeg += véletlenSzamok[n];
+}
+
+let atlag = osszeg / véletlenSzamok.length;
+_console.writeln(`A lista átlaga: ${atlag}`);
+
+_console.writeln(`A lista elemeinek szórása az átlagtól:`);
+for (let o = 0; o < véletlenSzamok.length; o++) {
+    let szoras = (véletlenSzamok[o] - atlag) ** 2;
+    _console.writeln(`Elem: ${véletlenSzamok[o]}, \tSzórás: ${szoras}`);
+}
+
 // szám átváltás
 // 5. Kérj be két számot, a második legyen 1-nél nagyobb és 11-nél kisebb! \
 //     Írd ki az első számot olyan számrendszerben, aminek az alapja a második szám! \
 //     Példa: első szám: 234, második szám: 7, kimenet: a 234 7-es számrendszerben = 453 (4*49 + 5*7 + 3)")
+
+_console.writeln("\n5. Feladat:")
+let a4 = await _console.prompt('Kérem az első számot')
+let a5 = await _console.prompt('\nKérem a második számot')
+
+let szam4 = parseInt(a4);
+let szamrendszer = parseInt(a5);
+let atvaltott = 0;
+
+if (szamrendszer > 1 && szamrendszer < 11) {
+
+    let temp = szam4;
+    let helyiertek = 1;
+    while (temp > 0) {
+        let maradek = temp % szamrendszer;
+        atvaltott = atvaltott + (maradek * helyiertek);
+        temp = Math.floor(temp / szamrendszer);
+        helyiertek = helyiertek * 10;
+    }
+
+    _console.writeln(`\nA ${szam4} szám ${szamrendszer}-es számrendszerben: ${atvaltott}`);
+
+} else {
+    _console.writeln("\nHiba: A második számnak 1-nél nagyobbnak és 11-nél kisebbnek kell lennie!");
+}
