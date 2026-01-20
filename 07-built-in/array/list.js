@@ -15,7 +15,7 @@ export default class List {
         //if (arg === undefined) {
         //    return this.#data = []
         //}
-        if (this.isIterable(arg)) {
+        if (this.#isIterable(arg)) {
         //    this.#data = [...arg] // 'a', 'b'
         //    this.#data = ['a', 'b']
             this.addRange(arg)
@@ -43,42 +43,67 @@ export default class List {
     // #region Elem hozzáadása / eltávolítása
     // void Add(T item) - Egy elem hozzáadása a lista végéhez
     add(item) {
-        if (item != undefined) {
+        if (item === undefined) {
             return
         }
         this.#data.push(item)
     }
     // void AddRange(IEnumerable<T> iterable) - Több elem hozzáadása egyszerre
     addRange(iterable) {
-        if (!this.#isIterable(iterable)) {
-            return
-        }
-        for (let elem of iterable){
-            this.#data.push(elem)
+        if (this.#isIterable(iterable)) {
+            for (let elem of iterable) {
+                this.add(elem)
+            }
         }
     }
     // void Insert(int index, T item) - Elem beszúrása adott indexre
     insert(index, item) {
-        this.#data[index] = item
+        this.#data.splice(index, 0, item)
     }
     // void InsertRange(int index, IEnumerable<T> items) - Elem beszúrása adott indexre
     insertRange(index, iterable) {
-        
+        if (this.#isIterable(iterable)) {
+            let current = index
+            for (let item of iterable) {
+                this.insert(current, item)
+                current++
+            }
+        }
     }
     // bool Remove(T item) - Az első egyező elem törlése
     remove(item) {
+        let index = this.#data.indexOf(item)
+        if (index > -1) {
+            this.#data.splice(index, 1)
+            return true
+        }
+        return false
     }
 
     // void RemoveAt(int index) - Elem törlése index alapján
     removeAt(index) {
+        if (index >= 0 && index < this.#data.length) {
+            this.#data.splice(index, 1)
+        }
     }
 
     // int RemoveAll(Predicate<T>) - Minden elem törlése, ami megfelel a feltételnek
     removeAll(predicate) {
+        let originalLength = this.#data.length
+        let newData = []
+        for (let i = 0; i < this.#data.length; i++) {
+            let item = this.#data[i]
+            if (!predicate(item)) {
+                newData.push(item)
+            }
+        }
+        this.#data = newData
+        return originalLength - this.#data.length
     }
 
     // Clear() - A lista teljes ürítése
     clear() {
+        this.#data = []
     }
     //#endregion
 
@@ -131,6 +156,16 @@ export default class List {
 
     // Count() - Elemek száma (feltétellel is)
     count(predicate) {
+        if (predicate === undefined) {
+            return this.#data.length
+        }
+        let counter = 0
+        for (let i = 0; i < this.#data.length; i++) {
+            if (predicate(this.#data[i])) {
+                counter++
+            }
+        }
+        return counter
     }
 
     sum(predicate) {
