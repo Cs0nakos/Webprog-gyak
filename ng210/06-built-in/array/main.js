@@ -1,7 +1,7 @@
-import StringTests from './string-tests.js'
+import ArrayTests from './array-tests.js'
 
 async function main() {
-	new StringTests().runAll()
+	new ArrayTests().runAll()
 }
 
 main();
