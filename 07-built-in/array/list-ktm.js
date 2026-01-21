@@ -58,15 +58,19 @@ export default class List {
     }
     // void Insert(int index, T item) - Elem beszúrása adott indexre
     insert(index, item) {
-        this.#data.splice(index, 0, item)
+        if (index >= 0 && index <= this.#data.length) {
+            this.#data.splice(index, 0, item)
+        }
     }
     // void InsertRange(int index, IEnumerable<T> items) - Elem beszúrása adott indexre
     insertRange(index, iterable) {
         if (this.#isIterable(iterable)) {
-            let current = index
-            for (let item of iterable) {
-                this.insert(current, item)
-                current++
+            let jelenlegi = index
+            if (jelenlegi >= 0 && jelenlegi <= this.#data.length) {
+                for (let item of iterable) {
+                    this.insert(jelenlegi, item)
+                    jelenlegi++
+                }
             }
         }
     }
@@ -89,16 +93,12 @@ export default class List {
 
     // int RemoveAll(Predicate<T>) - Minden elem törlése, ami megfelel a feltételnek
     removeAll(predicate) {
-        let originalLength = this.#data.length
-        let newData = []
-        for (let i = 0; i < this.#data.length; i++) {
-            let item = this.#data[i]
-            if (!predicate(item)) {
-                newData.push(item)
-            }
-        }
-        this.#data = newData
-        return originalLength - this.#data.length
+        if (typeof predicate !== 'function') return 0;
+
+        let eredetiHossz = this.#data.length
+        this.#data = this.#data.filter(item => !predicate(item));
+        
+        return eredetiHossz - this.#data.length
     }
 
     // Clear() - A lista teljes ürítése
@@ -159,6 +159,8 @@ export default class List {
         if (predicate === undefined) {
             return this.#data.length
         }
+        if (typeof predicate !== 'function') return 0;
+
         let counter = 0
         for (let i = 0; i < this.#data.length; i++) {
             if (predicate(this.#data[i])) {
