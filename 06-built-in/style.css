@@ -20,6 +20,8 @@ nav {
 section {
     border-radius: 1em;
     background-color: #2484;
+    display: block;
+    height: 2em;
 }
 
 
