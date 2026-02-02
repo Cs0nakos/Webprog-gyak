@@ -18,10 +18,28 @@ function buildSections(data) {
             return s;
         });
         
-        const main = document.querySelector('#content');
-        for (let s of sections) {
-            main.appendChild(s);
+    let main = document.querySelector('#content');
+    for (let s of sections) {
+        main.appendChild(s);
+    }
+
+    for (let key in data) {
+        let section = document.querySelector(`#${key}`);
+        if (section) {
+            section.innerHTML = `<h2 class="addTitle">${key}</h2>`;
+            let ul = document.createElement('ul');
+
+            for (let kulcs in data[key]) {
+                let li = document.createElement('li');
+                li.textContent = `${kulcs}: ${data[key][kulcs]}`;
+                ul.appendChild(li);
+            }
+            section.appendChild(ul);
         }
+        else {
+            section.innerHTML = `<h2 class="addTitle">${key}</h2><p>${data[key]}</p>`;
+        }
+    }
 }
 
 function buildPage(data) {
