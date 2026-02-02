@@ -26,7 +26,7 @@ function buildSections(data) {
     for (let key in data) {
         let section = document.querySelector(`#${key}`);
         if (section) {
-            section.innerHTML = `<h2 class="addTitle">${key}</h2>`;
+            section.innerHTML = `<h2 class="addTitle" id="${key}">${key}</h2>`;
             let ul = document.createElement('ul');
 
             for (let kulcs in data[key]) {
