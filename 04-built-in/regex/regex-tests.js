@@ -92,7 +92,7 @@ export default class RegexTests extends Test {
     }
     async test_findTestsExec3() {
         const src = await this.loadResource('regex-tests.js')
-        this.isEqual('findTestsExec(src)', this.tasks.findTestsExec(src)?.length, 29)
+        this.isEqual('findTestsExec(src)', this.tasks.findTestsExec(src)?.length, 30)
     }
     //#endregion
 

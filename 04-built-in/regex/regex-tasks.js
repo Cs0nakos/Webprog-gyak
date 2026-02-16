@@ -40,8 +40,8 @@ export default class RegexTasks {
     // Bemenet: string | null
     // Kimenet: bool
     isDate(text) {
-        const reg = /\d\d\d\d-\d\d-\d\d/;
-
+        //const reg = /\d\d\d\d-\d\d-\d\d/;
+        const reg = /^\d{4}-\d{2}-\d{2}$/;
         return reg.test(text);
     }
     //#endregion
@@ -54,9 +54,21 @@ export default class RegexTasks {
     // Bemenet: string | null
     // Kimenet: string[]
     findTestsExec(text) {
+
+        //const re = new RegExp('test_\\w+\\(', 'i');
         if (text === null) {
             return null;
         }
+
+        const re = /test_\w+\(/ig
+        let results = [];
+        let arr;
+
+        while((arr = re.exec(text)) != null){
+            results.push(arr[0].slice(0, -1));
+        }
+        
+        return results;
 
     }
     //#endregion
@@ -72,6 +84,14 @@ export default class RegexTasks {
         if (text === null) {
             return null;
         }
+
+        const re = /test_\w+\(/ig
+        let results = [];
+        let arr;
+        let m = text.match(re);
+        console.log(m);
+
+        return m?.map(m => m.slice(0, -1));
 
     }
 
