@@ -5,9 +5,8 @@ export default class RegexTasks {
     // Bemenet: string | null
     // Kimenet: bool
     isInt(text) {
-        const reg = /^[+-]?\d+$/;
-
-        return reg.test(text);
+        const re = /^[+-]?\d+$/
+        return re.test(text)
     }
 
     // Leírás: megvizsgálja, hogy az átadott szöveg decimális valós számot tartalmaz-e
@@ -15,24 +14,22 @@ export default class RegexTasks {
     // Kimenet: bool
     isFloat(text) {
         // 10.
-        const reg1 = /^[+-]?\d+\.$/;
+        const re1 = /^[+-]?\d+\.$/
         // .10
-        const reg2 = /^[+-]?\.\d+$/;
+        const re2 = /^[+-]?\.\d+$/
         // 10.10
-        const reg3 = /^[+-]?\d+\.\d+$/;
-
-        const reg = new RegExp(`${reg1.source}|${reg2.source}|${reg3.source}`);
-
-        return reg.test(text);
+        const re3 = /^[+-]?\d+\.\d+$/
+        const re = new RegExp(`${re1.source}|${re2.source}|${re3.source}`)
+        return re.test(text)
     }
     
     // Leírás: megvizsgálja, hogy az átadott szöveg tudományos formátumú számot tartalmaz-e
     // Bemenet: string | null
     // Kimenet: bool
+    // 1.001e+5
     isScientific(text) {
-        const reg = /^[+-]?\d+\.\d+([eE][+-]?\d+)?$/;
-
-        return reg.test(text);
+        const re = /^[+-]?\d\.\d+e[+-]\d+$/
+        return re.test(text)
     }
 
     // Leírás: megvizsgálja, hogy az átadott szöveg fix formátumú dátumot tartalmaz-e
@@ -40,9 +37,9 @@ export default class RegexTasks {
     // Bemenet: string | null
     // Kimenet: bool
     isDate(text) {
-        //const reg = /\d\d\d\d-\d\d-\d\d/;
-        const reg = /^\d{4}-\d{2}-\d{2}$/;
-        return reg.test(text);
+        //const re = /\d\d\d\d\-\d\d\-\d\d/
+        const re = /^\d{4}\-\d{2}\-\d\d$/
+        return re.test(text)
     }
     //#endregion
 
@@ -54,22 +51,15 @@ export default class RegexTasks {
     // Bemenet: string | null
     // Kimenet: string[]
     findTestsExec(text) {
-
-        //const re = new RegExp('test_\\w+\\(', 'i');
-        if (text === null) {
-            return null;
-        }
-
+        if (text == null) return null
+        //const re = new RegExp('test_\\w+\\(', 'i')
         const re = /test_\w+\(/ig
-        let results = [];
-        let arr;
-
-        while((arr = re.exec(text)) != null){
-            results.push(arr[0].slice(0, -1));
+        let results = []
+        let arr
+        while ((arr = re.exec(text)) != null) {
+            results.push(arr[0].slice(0, -1))
         }
-        
-        return results;
-
+        return results
     }
     //#endregion
 
@@ -81,18 +71,10 @@ export default class RegexTasks {
     // Bemenet: string | null
     // Kimenet: string[]
     findTestsMatch(text) {
-        if (text === null) {
-            return null;
-        }
-
+        if (text == null) return null
         const re = /test_\w+\(/ig
-        let results = [];
-        let arr;
-        let m = text.match(re);
-        console.log(m);
-
-        return m?.map(m => m.slice(0, -1));
-
+        let m = text.match(re)
+        return m?.map(m => m.slice(0, -1)) ?? [];
     }
 
     //#endregion
@@ -105,8 +87,11 @@ export default class RegexTasks {
     // Bemenet: string | null, object | null
     // Kimenet: string
     applyTemplate(template, obj) {
-
+        if (!template ||!obj) return template
+        return template.replace(
+            /\{(\w+)\}/ig,
+            (m, p1) => obj[p1] 
+        )
     }
-
-    //#endregion
 }
+    //#endregion
